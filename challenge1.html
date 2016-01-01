@@ -14,8 +14,14 @@
 </template>
 
 <template name="player">
-  <p><a href="/" >&lt;-- Back</a></p>
-  <button id="rock">Rock</button>
-  <button id="paper">Paper</button>
-  <button id="scissors">Scissors</button>
+  <div class="nav">
+    <p><a href="/" >Home</a></p>
+  </div>
+  <div class="player">
+    <p>You are Player {{player}}</p>
+    <p>Make your choice:</p>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+  </div>
 </template>
