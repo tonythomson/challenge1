@@ -1,3 +1,6 @@
+Moves = new Mongo.Collection('moves');
+
+
 if (Meteor.isClient) {
 
   function checkWinner(player, move) {
@@ -5,6 +8,9 @@ if (Meteor.isClient) {
     });
   }
 
+  Meteor.subscribe('moves', function() {
+    console.log('Got a moves event');
+  });
 
   Template.player.helpers({
     player: function() {
@@ -14,21 +20,27 @@ if (Meteor.isClient) {
 
   Template.player.events({
     'click button': function(e) {
-      var player = Session.get('player'),
-        move = e.target.id;
+      console.log('Adding move to collection');
 
-      Session.set('roshambo' + player, move);
-      checkWinner(player, move);
+      Moves.insert({
+        player: Session.get('player'),
+        move: e.target.id
+      });
     }
   });
 }
 
 if (Meteor.isServer) {
+
   Meteor.methods({
     declareWinner: function(player, move){
       console.log('Received move ' + move + ' from player ' + player);
       return false;
     },
+  });
+
+  Meteor.publish('moves', function() {
+    return Moves.find();
   });
 
 }
