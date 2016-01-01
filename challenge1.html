@@ -3,12 +3,19 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>Roshambo!</h1>
 
-  {{> hello}}
+
 </body>
 
 <template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+  <p><a href="/player1" >Play as Player 1</a></p>
+  <p><a href="/player2" >Play as Player 2</a></p>
+</template>
+
+<template name="player">
+  <p><a href="/" >&lt;-- Back</a></p>
+  <button id="rock">Rock</button>
+  <button id="paper">Paper</button>
+  <button id="scissors">Scissors</button>
 </template>
