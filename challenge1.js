@@ -3,6 +3,19 @@ Moves = new Mongo.Collection('moves');
 
 if (Meteor.isClient) {
 
+  function initRound() {
+    var round,
+      currentRound = Moves.findOne({}, {sort: {round: -1}});
+
+    if (currentRound) {
+      round = (currentRound.winner) ? currentRound.round + 1 : currentRound.round;
+    } else {
+      round = 1;
+    }
+
+    Session.set('round', round);
+  }
+
   function opponent() {
     return (Session.get('player') === 1) ? 2 : 1;
   }
@@ -16,7 +29,12 @@ if (Meteor.isClient) {
     Session.set('round', currentRound + 1);
   }
 
-  Meteor.subscribe('moves');
+  Meteor.subscribe('moves', function() {
+    Meteor.autorun(function() {
+      // Moves.findOne({}, {sort: {round: -1}});
+      initRound()
+    });
+  });
 
   Template.player.helpers({
     player: function() {
@@ -49,8 +67,6 @@ if (Meteor.isClient) {
     }
   });
 
-  // initRound();
-  Session.set('round', 1);
 }
 
 /* Server *******************************************/

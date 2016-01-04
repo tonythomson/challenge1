@@ -13,7 +13,7 @@ After finally finding the 'do something when collection updates' functionality I
 ### Open issues
 
 #### Bugs:
-Right now we're not clearing the collection at any point except server startup, and since the round is reset to 1 when the user refreshes, we can wind up with a list of previous rounds when the current round is displayed as 1.
+It's possible for a player to keep making moves without waiting for a round to finish. We could disable the buttons until a round is complete...
 
 #### Styling:
 I've focused strictly on getting to know Meteor for this project, and have made no effort to style this game attractively
