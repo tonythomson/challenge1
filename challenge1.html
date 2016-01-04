@@ -9,8 +9,8 @@
 </body>
 
 <template name="hello">
-  <p><a href="/player1" >Play as Player 1</a></p>
-  <p><a href="/player2" >Play as Player 2</a></p>
+  <p><a href="/player1" >Player 1</a></p>
+  <p><a href="/player2" >Player 2</a></p>
 </template>
 
 <template name="player">
@@ -32,8 +32,14 @@
     </ul>
     <h2>Round {{currentRound}}</h2>
     <p>Make your choice:</p>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
+    <div class="moves">
+      <button id="rock" class="move">Rock</button>
+      <button id="paper" class="move">Paper</button>
+      <button id="scissors" class="move">Scissors</button>
+    </div>
+    <div>
+      <button id="reset">Reset game</button>
+    </div>
+
   </div>
 </template>

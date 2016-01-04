@@ -41,8 +41,11 @@ if (Meteor.isClient) {
   });
 
   Template.player.events({
-    'click button': function(e) {
+    'click button.move': function(e) {
       recordMove(e.target.id);
+    },
+    'click button#reset': function() {
+      Meteor.call('resetGame');
     }
   });
 
