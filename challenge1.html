@@ -19,6 +19,18 @@
   </div>
   <div class="player">
     <p>You are Player {{player}}</p>
+    <ul>
+      {{#each moves}}
+      <li>Round {{round}}:
+      {{#if winner}}
+      Player 1 played {{player1}}, Player 2 played {{player2}}, {{displayWinner winner}}
+      {{else}}
+      Waiting...
+      {{/if}}
+      </li>
+      {{/each}}
+    </ul>
+    <h2>Round {{currentRound}}</h2>
     <p>Make your choice:</p>
     <button id="rock">Rock</button>
     <button id="paper">Paper</button>

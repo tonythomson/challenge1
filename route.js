@@ -11,6 +11,6 @@ Router.route('/player1', function() {
 
 Router.route('/player2', function() {
   'use strict';
-    Session.set('player', 2);
+  Session.set('player', 2);
   this.render('player');
-})
+});
